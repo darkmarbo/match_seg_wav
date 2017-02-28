@@ -1,0 +1,17 @@
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Form1.resources
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+D:\C#\调用dll对齐两个wav\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Form1.resources
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
+D:\多通道对齐-赵蕾-20170222\match_seg\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

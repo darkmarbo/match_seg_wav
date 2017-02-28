@@ -1,0 +1,708 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AudioSuite</name>
+    </assembly>
+    <members>
+        <member name="T:WaveConvertNet.WaveFile">
+            <summary>
+            WaveFile Class implements a RIFF wav file.
+            It can in any stream(r/w) container. 
+            </summary>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.IO.Stream,WaveConvertNet.WaveFormat,System.Boolean,System.UInt32,System.UInt16)">
+            <summary>
+            Open an wav file in stream for read or write (Create if possible)
+            </summary>
+            <param name="_basicStream">
+            The basic stream contains the wave file(FileStream or MemoryStream ...)
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nSamplesPerSec">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the sampple rate.
+            </param>
+            <param name="_nChannel">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the channel number.
+            </param>
+            <returns>
+            0---Success
+            -1---Stream could not be open or could not seek or could not access due to the param _isRead.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.IO.Stream,WaveConvertNet.WaveFormat,System.Boolean,System.UInt32)">
+            <summary>
+            Open an wav file in stream for read or write (Create if possible)
+            </summary>
+            <param name="_basicStream">
+            The basic stream contains the wave file(FileStream or MemoryStream ...)
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nSamplesPerSec">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the sampple rate.
+            </param>
+            <returns>
+            0---Success
+            -1---Stream could not be open or could not seek or could not access due to the param _isRead.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.IO.Stream,WaveConvertNet.WaveFormat,System.Boolean,System.UInt16)">
+            <summary>
+            Open an wav file in stream for read or write (Create if possible)
+            </summary>
+            <param name="_basicStream">
+            The basic stream contains the wave file(FileStream or MemoryStream ...)
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nChannel">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the channel number.
+            </param>
+            <returns>
+            0---Success
+            -1---Stream could not be open or could not seek or could not access due to the param _isRead.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.IO.Stream,WaveConvertNet.WaveFormat)">
+            <summary>
+            Open an wav file in stream for read or write (Create if possible)
+            </summary>
+            <param name="_basicStream">
+            The basic stream contains the wave file(FileStream or MemoryStream ...)
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <returns>
+            0---Success
+            -1---Stream could not be open or could not seek or could not access due to the param _isRead.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.IO.Stream)">
+            <summary>
+            Open an wav file in stream for read or write (Create if possible)
+            </summary>
+            <param name="_basicStream">
+            The basic stream contains the wave file(FileStream or MemoryStream ...)
+            </param>
+            <returns>
+            0---Success
+            -1---Stream could not be open or could not seek or could not access due to the param _isRead.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.String,WaveConvertNet.WaveFormat,System.Boolean,System.UInt32,System.UInt16)">
+            <summary>
+            Open an wav file for read or write (Create if possible)
+            </summary>
+            <param name="sFileName">
+            the full path of the file, could be relative to the exe file.
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nSamplesPerSec">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the sampple rate.
+            </param>
+            <param name="_nChannel">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the channel number.
+            </param>
+            <returns>
+            0---Success
+            -1---File could not be open.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.String,WaveConvertNet.WaveFormat,System.Boolean,System.UInt32)">
+            <summary>
+            Open an wav file for read or write (Create if possible)
+            </summary>
+            <param name="sFileName">
+            the full path of the file, could be relative to the exe file.
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nSamplesPerSec">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the sampple rate.
+            </param>
+            <returns>
+            0---Success
+            -1---File could not be open.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.String,WaveConvertNet.WaveFormat,System.Boolean,System.UInt16)">
+            <summary>
+            Open an wav file for read or write (Create if possible)
+            </summary>
+            <param name="sFileName">
+            the full path of the file, could be relative to the exe file.
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <param name="_isRead">
+            Set to true if the file is for read, or false for write.[Default true]
+            </param>
+            <param name="_nChannel">
+            For Reading set 0 to use the auto detect, or nonezero to check the autoselect, if they are not same, -2 is returned.
+            For Writing can not be zero, set the channel number.
+            </param>
+            <returns>
+            0---Success
+            -1---File could not be open.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.String,WaveConvertNet.WaveFormat)">
+            <summary>
+            Open an wav file for read or write (Create if possible)
+            </summary>
+            <param name="sFileName">
+            the full path of the file, could be relative to the exe file.
+            </param>
+            <param name="_waveFormat">
+            enum value of an waveFormat.[Default WF_NONE]
+            For reading: If _waveFormat is set to WF_NONE then the detected format is used.(Little Endian By Default)
+                         If _waveFormat is not WF_NONE and the detected format is different then -2 is returned, else the file will be load. 
+                         If the file is raw and _waveFormat is not WF_NONE, then use the _waveFormat as the file format.
+                         If the file is raw and _waveFormat is WF_NONE, then -3 is returned.
+            For writing: Write the file in _waveFormat, WF_NONE means a raw type.
+            </param>
+            <returns>
+            0---Success
+            -1---File could not be open.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.OpenFile(System.String)">
+            <summary>
+            Open an wav file for read or write (Create if possible)
+            </summary>
+            <param name="sFileName">
+            the full path of the file, could be relative to the exe file.
+            </param>
+            <returns>
+            0---Success
+            -1---File could not be open.
+            -2---Format not match(Read mode).
+            -3---Format not detected(Read mode).
+            -4---File format not support.
+            -5---No data found.
+            -6---Unsupport samplerate.(Write Mode).
+            -7---Unsupport channel number;
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.CloseFile">
+            <summary>
+            //Close the opened file.
+            </summary>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.FlushFile">
+            <summary>
+            //Flush the opened file. Only use in write mode
+            </summary>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.SeekFile(System.Int32,WaveConvertNet.SeekOption)">
+            <summary>
+            Change the curret stream positon(might be very slow, use as least as you can)
+            </summary>
+            <param name="offset">
+            the relative offset of the given seekOpt.
+            </param>
+            <param name="seekOpt">
+            use One of the SeekOpe enum.
+            FILE_SET: The begining of the file.
+            FILE_CUR: The current place of the stream.
+            FILE_END: The end of the file.
+            WF_DATA_SET: The begining of the data part.
+            DATA_END: The end of the data part.
+            </param>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.FindChuck(System.String,System.Boolean)">
+            <summary>
+            Find the chuck that chuckName specified.
+            </summary>
+            <param name="chuckName">The name of the chuck, case sensitive. e.g. "RIFF" "fmt "</param>
+            <param name="restart">If the search should restart. [Default: false]
+                                  True if you want to search the chuck from the beginning of the file.
+            			          False if you want to search from the current pos of the file.</param>
+            <returns>true if the chuck is found, and fptr locates after the chuck string.
+            	     false if the chuck is not found, and fptr locates when you call the function.</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.FindChuck(System.String)">
+            <summary>
+            Find the chuck that chuckName specified.
+            </summary>
+            <param name="chuckName">The name of the chuck, case sensitive. e.g. "RIFF" "fmt "</param>
+            <returns>true if the chuck is found, and fptr locates after the chuck string.
+            	     false if the chuck is not found, and fptr locates when you call the function.</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.CreateData(System.Int16[0:,0:]@,System.Int32)">
+            <summary>
+            Create a data for functions like GetDataInShort(); 
+            It's nearly no use in .NET version. It just reserved for some trans code usage.
+            </summary>
+            <param name="data">
+            A reference to a 2 degree short array to hold the data.
+            </param>
+            <param name="size">
+            The length of data in the last degree.
+            </param>
+            <returns>
+            True if data is created succesfully, or false is anything going wrong, but previews data might be freed.
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.DestoryData(System.Int16[0:,0:]@)">
+            <summary>
+            Destroty a data for functions like GetDataInShort();
+             It's nearly no use in .NET version. It just reserved for some trans code usage.
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetData(System.Int16[0:,0:]@,System.Int32)">
+             <summary>
+             Get waveData in short format.
+             </summary>
+             <param name="data">
+             The buffer to recieve data, you NEED NOT to use CreateData() to initialze data before passing it,
+            	You can but not nessesary to use DestoryData() to free the memory unless you want the memory be freed instantly.
+            	The .NET platform will automatically deal with the memory.
+            	The format is data[CHANNEL_NUM,BUFFER_LENGTH]. 
+            	Self memory management is not recommand. The data parameter also could be a null variable. 
+            </param>
+             <param name="size">
+             The maxium number of data element that you  want to read.The length data will be widen if nessesary.
+             </param>
+             <returns>
+             The number of element readed in data
+             </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.PutData(System.Int16[0:,0:],System.Int32,System.Int32)">
+            <summary>
+            Put waveData in short format into waveFile.(Single channel)
+            </summary>
+            <param name="data">
+            The buffer containing data, you shoud Use CreateData() to initialze data before passing it,
+            and DestoryData() to free the memory instently. The format is data[CHANNEL_NUM][BUFFER_LENGTH].
+            Self memory management is not recommand, use CreateData() and DestoryData() instead.
+            </param>
+            <param name="size">
+            The maxium number of data element that you  want to put into file.
+            </param>
+            <param name="startNum">
+            Use data[startNum] istead of data[0] as the begining to fill every track of the output wave. 
+            If data has not enougth channels, 0 data will be filled.
+            </param>
+            <returns>
+            Return the number of element put from data
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.PutData(System.Int16[0:,0:],System.Int32)">
+            <summary>
+            Put waveData in short format into waveFile.
+            </summary>
+            <param name="data">
+            The buffer containing data, you shoud Use CreateData() to initialze data before passing it,
+            and DestoryData() to free the memory instently. The format is data[CHANNEL_NUM][BUFFER_LENGTH].
+            Self memory management is not recommand, use CreateData() and DestoryData() instead.
+            </param>
+            <param name="size">
+            The maxium number of data element that you  want to put into file.
+            </param>
+            <returns>
+            Return the number of element put from data
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetDataBySampleIndex(System.Int16[0:,0:]@,System.UInt32,System.UInt32)">
+            <summary>
+            Get the data form startSampleIndex till endSampleIndex, endSampleIndex is not included.
+            </summary>
+            <param name="data">
+            The buffer to recieve data, you NEED NOT to use CreateData() to initialze data before passing it,
+            You can but not nessesary to use DestoryData() to free the memory unless you want the memory be freed instantly.
+            The .NET platform will automatically deal with the memory.
+            The format is data[CHANNEL_NUM,BUFFER_LENGTH]. 
+            Self memory management is not recommand. The data parameter also could be a null variable. 
+            </param>
+            <param name="startSampleIndex">
+            The sample index that start form the data. 0 started
+            </param>
+            <param name="endSampleIndex">
+            The sample index that end to the data, not included. -1 for no limit.
+            </param>
+            <returns>
+            Return the number of element put from data.
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetDataByTime(System.Int16[0:,0:]@,System.Double,System.Double)">
+            <summary>
+            Get waveData in short format.
+            </summary>
+            <param name="data">
+            The buffer to recieve data, you NEED NOT to use CreateData() to initialze data before passing it,
+            You can but not nessesary to use DestoryData() to free the memory unless you want the memory be freed instantly.
+            The .NET platform will automatically deal with the memory.
+            The format is data[CHANNEL_NUM,BUFFER_LENGTH]. 
+            Self memory management is not recommand. The data parameter also could be a null variable. 
+            </param>
+            <param name="startTime">
+            The time that start form the begining of the wave in second, to begin data retriving.
+            </param>
+            <param name="endTime">
+            The time that start form the begining of the wave in second, to finish data retriving.
+            </param>
+            <returns>
+            Return the number of element put from data.
+            </returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetSamplePerSec">
+            <summary>
+            Return samplerate of the wave.
+            </summary>
+            <returns>Sample rate.</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetChannelNum">
+            <summary>
+            Return channel number of the wave.
+            </summary>
+            <returns>Channel number</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetBitsPerSample">
+            <summary>
+            Return bits per sample of the wave.
+            </summary>
+            <returns>BitsPerSample</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetBytesPerSample">
+            <summary>
+            Return bypes per sample of the wave.
+            </summary>
+            <returns>BytesPerSample</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetAvgBytesPerSec">
+            <summary>
+            Return average bytes per seconds of the wave.
+            </summary>
+            <returns>AvgBytesPerSec</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetBlockAlign">
+            <summary>
+            Return block align of the wave.
+            </summary>
+            <returns>BlockAlign</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetTotalSample">
+            <summary>
+            Return the total sample count of the wave.
+            </summary>
+            <returns>TotalSample</returns>
+        </member>
+        <member name="M:WaveConvertNet.WaveFile.GetDataSize">
+            <summary>
+            Return the total data size (in bytes) of the wave.
+            </summary>
+            <returns>DataSize</returns>
+        </member>
+        <member name="T:WaveConvertNet.WaveFormat">
+            <summary>
+            [Enum] Wave Formats supported by AudioSuite.
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.WaveFormat.WF_NONE">
+            <summary>
+            Undefined wave format, In read, use file format, in write use preset format
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.WaveFormat.WF_PCM_S16LE">
+            <summary>
+            PCM Singed 16 bit little endian wave form(most commonly);
+            </summary>
+        </member>
+        <member name="T:WaveConvertNet.SeekOption">
+            <summary>
+            [Enum] Seek options supported by WaveFile.SeekFile
+            <seealso cref="M:WaveConvertNet.WaveFile.SeekFile(System.Int32,WaveConvertNet.SeekOption)"/>
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.SeekOption.FILE_SET">
+            <summary>
+            Start postion of the whole file.
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.SeekOption.FILE_CUR">
+            <summary>
+            Current position of the file.
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.SeekOption.FILE_END">
+            <summary>
+            Ending position of the file.
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.SeekOption.WF_DATA_SET">
+            <summary>
+            Start positon of the data chunk.
+            </summary>
+        </member>
+        <member name="F:WaveConvertNet.SeekOption.DATA_END">
+            <summary>
+            Ending position of the data chunk.
+            </summary>
+        </member>
+        <member name="T:AudioSegmentNet.SEGMENT">
+            <summary>
+            A voice segment
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.SEGMENT.begin">
+            <summary>
+            Start position of seconds in the segment.
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.SEGMENT.end">
+            <summary>
+            End position of seconds in the segment.
+            </summary>
+        </member>
+        <member name="T:AudioSegmentNet.INTENSITY">
+            <summary>
+            Int format inside a wave.
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.INTENSITY.stamp">
+            <summary>
+            Position in secondes of the wave
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.INTENSITY.value">
+            <summary>
+            Actual intensity value.
+            </summary>
+        </member>
+        <member name="T:AudioSegmentNet.AudioSegmenter">
+            <summary>
+            AudieSegmenter, contains data and method to segment audio.
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.AudioSegmenter.m_nSampleRate">
+            <summary>
+            Samplerate of the wav.
+            </summary>
+        </member>
+        <member name="F:AudioSegmentNet.AudioSegmenter.m_nChannelIndex">
+            <summary>
+            With channel is used for segmentation.
+            </summary>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.mean(System.Double[])">
+            <summary>
+            Get variance of vArr
+            </summary>
+            <param name="vArr">Valuses to calute variance</param>
+            <returns>The variance value of elements in vArr</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.variance(System.Double[])">
+            <summary>
+            Get variance of vArr
+            </summary>
+            <param name="vArr">Valuses to calute variance</param>
+            <returns>The variance value of elements in vArr</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.stddev(System.Double[])">
+            <summary>
+            Get stddev of vArr
+            </summary>
+            <param name="vArr">Valuses to calute stddev</param>
+            <returns>The stddev value of elements in vArr</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.combine_utts(AudioSegmentNet.SEGMENT[],System.Double)">
+            <summary>
+            Combine frequently small segments into a big one.
+            </summary>
+            <param name="vSeg">Segment list</param>
+            <param name="fMaxPause">Maximun pause time between to segments that allow combine.</param>
+            <returns>Segments list after combination.</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.pad_utts(AudioSegmentNet.SEGMENT[],System.Double,System.Double,System.Double)">
+            <summary>
+            Pad segments fHeadPad to the head and fEndPad to the tail, and no segments are share the same time.
+            </summary>
+            <param name="vSeg">Segment list</param>
+            <param name="fWaveLen">Total length of the wav.</param>
+            <param name="fHeadPad">Seconds to extend head.</param>
+            <param name="fEndPad">Seconds to extend tail.</param>
+            <returns>The number in vSeg[], vSeg[] itself is changed.</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.seg_utts_by_Intensity(AudioSegmentNet.INTENSITY[],System.Double)">
+            <summary>
+            Get Segment by intensionty.
+            </summary>
+            <param name="vIntensity">Intensity List</param>
+            <param name="fThresholdCoef">The threshold to determin how much intensity should treat as a bounder.</param>
+            <returns>Segment list</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.calcIntensity(System.Int16[0:,0:],System.UInt32,System.UInt16,System.Double,System.Double)">
+            <summary>
+            Calulate Intensity of a wave.
+            </summary>
+            <param name="pData">Wave data</param>
+            <param name="sampleRate">Wave samplerate</param>
+            <param name="channelIndex">The channel that use to calculate intensity.</param>
+            <param name="fMinPitch">Minium pitch time.</param>
+            <param name="fTimeStep">Time step for move the window.</param>
+            <returns>Intensity List</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.calcIntensity(WaveConvertNet.WaveFile,System.UInt16,System.Double,System.Double)">
+            <summary>
+            Calulate Intensity of a wave. (Stream in file)
+            </summary>
+            <param name="waveFile">WaveFile Format <seealso cref="T:WaveConvertNet.WaveFile"/></param>
+            <param name="channelIndex">The channel that use to calculate intensity.</param>
+            <param name="fMinPitch">Minium pitch time.</param>
+            <param name="fTimeStep">Time step for move the window.</param>
+            <returns>Intensity List</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.getSegment(System.Int16[0:,0:],System.UInt32,System.UInt16,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Get Segments from a wavedata. (Actually used.)
+            </summary>
+            <param name="pData">Wave data</param>
+            <param name="sampleRate">Wave sample rate</param>
+            <param name="channelIndex">Channel that used to segment.</param>
+            <param name="fMinPitch">Minium pitch time.</param>
+            <param name="fTimeStep">Time step for move the window.</param>
+            <param name="fMaxPause">Maximun pause time between to segments that allow combine.</param>
+            <param name="fThresholdCoef">The threshold to determin how much intensity should treat as a bounder.</param>
+            <param name="fBeginPad">Seconds to extend head.</param>
+            <param name="fEndPad">Seconds to extend tail.</param>
+            <returns>Segment List</returns>
+        </member>
+        <member name="M:AudioSegmentNet.AudioSegmenter.getSegment(WaveConvertNet.WaveFile,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Get Segments from a wavedata. (Actually used.)(Streammed)
+            </summary>
+            <param name="waveFile">WaveFile Format <seealso cref="T:WaveConvertNet.WaveFile"/></param>
+            <param name="channelIndex">Channel that used to segment.</param>
+            <param name="fMinPitch">Minium pitch time.</param>
+            <param name="fTimeStep">Time step for move the window.</param>
+            <param name="fMaxPause">Maximun pause time between to segments that allow combine.</param>
+            <param name="fThresholdCoef">The threshold to determin how much intensity should treat as a bounder.</param>
+            <param name="fBeginPad">Seconds to extend head.</param>
+            <param name="fEndPad">Seconds to extend tail.</param>
+            <returns>Segment List</returns>
+        </member>
+    </members>
+</doc>
