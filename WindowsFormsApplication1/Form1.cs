@@ -265,14 +265,21 @@ namespace WindowsFormsApplication1
                                 double time_end = double.Parse(str_split[5]) / 1000.0;
                                 //textBoxLog.AppendText("\t"+id+" "+time_st+" "+time_end+"\r\n");
 
-                                //// 输出 seg wav 
-                                string out_seg_wav = di_out_wav.FullName + "\\" +id+ ".wav";
-                                WaveFile outWav_seg = new WaveFile();
-                                outWav_seg.OpenFile(out_seg_wav, inWav.WaveFileFormat, false, (UInt32)sampleRate, (ushort)data.GetLength(0));
+                                
 
                                 
                                 int len_st = (int)((aa * time_st + bb)*sampleRate);
                                 int len_end = (int)((aa * time_end + bb)*sampleRate);
+                                // pcm 左边位置不够  或者 右边位置不够 
+                                if (len_end < 0 || len_st < 0 || datalength < len_end)
+                                {
+                                    continue;
+                                }
+
+                                //// 输出 seg wav 
+                                string out_seg_wav = di_out_wav.FullName + "\\" + id + ".wav";
+                                WaveFile outWav_seg = new WaveFile();
+                                outWav_seg.OpenFile(out_seg_wav, inWav.WaveFileFormat, false, (UInt32)sampleRate, (ushort)data.GetLength(0));
                                 short[,] data_new_seg = null;
                                 data_new_seg = new short[num_chanel, len_end-len_st];
                                 for (int ii = len_st; ii < len_end; ii++)
@@ -315,6 +322,8 @@ namespace WindowsFormsApplication1
 
             wr_log.Close();
             fs_log.Close();
+            fs_log = null;
+            wr_log = null;
             
         }
 

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "speechMatchDLL", "..\speechMatchDLL\speechMatchDLL\speechMatchDLL.vcxproj", "{52532AE0-9896-4881-9B2A-FB150D42A924}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B40886CA-188B-48EC-9302-6F4EFF1BB5F5}.Release|Win32.ActiveCfg = Release|Any CPU
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Debug|Win32.ActiveCfg = Debug|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Debug|Win32.Build.0 = Debug|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Release|Any CPU.ActiveCfg = Release|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Release|Win32.ActiveCfg = Release|Win32
+		{52532AE0-9896-4881-9B2A-FB150D42A924}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
